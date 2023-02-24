@@ -89,10 +89,10 @@ pipeline {
         }
       post {
         failure {
-            echo 'maven build failure'
+            echo 'docker container deploymenet failure'
         }
         success {
-            echo 'maven build success'
+            echo 'docker container deploymenet success'
         }
       }
     }
