@@ -19,7 +19,7 @@ pipeline {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: gitCredential, url: gitWebaddress]]])
         }
       post {
-        failuer {
+        failure {
             echo 'Repository clone failure'
         }
         success {
@@ -34,7 +34,7 @@ pipeline {
         // maven 플러그인이 미리 설치되어 있어야 함
         }
       post {
-        failuer {
+        failure {
             echo 'maven build failure'
         }
         success {
