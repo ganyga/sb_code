@@ -85,7 +85,7 @@ pipeline {
       }
     }
 
-        stage('docker container deploy') {
+        stage('docker container deployment') {
       steps {
         sh "docker rm -f sb"
         sh "docker run -dp 5656:8085 --name sb ${dockerHubRegistry}:${currentBuild.number}"
@@ -94,9 +94,11 @@ pipeline {
       post {
         failure {
             echo 'docker container deploymenet failure'
+            slackSend (color: '#FF0000', message: "FAILURE: docker container deployment '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         }
         success {
             echo 'docker container deploymenet success'
+            slackSend (color: '#0000FF', message: "SUCCESS: docker container deployment '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         }
       }
     }
