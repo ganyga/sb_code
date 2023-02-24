@@ -5,7 +5,7 @@ pipeline {
     maven 'my_maven'
   }
 
-  environmenet{
+  environment{
     gitName = 'gany'
     gitEmail = 'artzana03@gmail.com'
     gitWebaddress = 'https://github.com/ganyga/sb_code.git'
